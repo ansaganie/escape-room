@@ -1,5 +1,5 @@
 import * as S from './booking-modal.styled';
-import { ReactComponent as IconClose } from 'assets/img/icon-close.svg';
+import { ReactComponent as IconClose } from '../../../../assets/img/icon-close.svg';
 
 function BookingModal(): JSX.Element {
   return (

@@ -1,10 +1,7 @@
+import { ChildrenProp } from '../../../types/children-prop';
 import * as S from './container.styled';
 
-type Props = {
-  children: JSX.Element | null,
-}
-
-function Container({ children, ...props }: Props): JSX.Element {
+function Container({ children, ...props }: ChildrenProp): JSX.Element {
   return <S.Container {...props}>{children}</S.Container>;
 }
 

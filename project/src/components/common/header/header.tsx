@@ -1,4 +1,4 @@
-import logo from 'assets/img/logo.svg';
+import logo from '../../../assets/img/logo.svg';
 import * as S from './header.styled';
 
 function Header(): JSX.Element {
@@ -13,24 +13,23 @@ function Header(): JSX.Element {
           <S.Links>
             <S.LinkItem>
               <S.Link active to="/">
-              Квесты
+                Квесты
               </S.Link>
             </S.LinkItem>
-
             <S.LinkItem>
-              <S.Link to="#">Новичкам</S.Link>
+              <S.Link active={false} to="#">Новичкам</S.Link>
             </S.LinkItem>
 
             <S.LinkItem>
-              <S.Link to="#">Отзывы</S.Link>
+              <S.Link active={false} to="#">Отзывы</S.Link>
             </S.LinkItem>
 
             <S.LinkItem>
-              <S.Link to="#">Акции</S.Link>
+              <S.Link active={false} to="#">Акции</S.Link>
             </S.LinkItem>
 
             <S.LinkItem>
-              <S.Link to="/contacts">Контакты</S.Link>
+              <S.Link active={false} to="/contacts">Контакты</S.Link>
             </S.LinkItem>
           </S.Links>
         </S.Navigation>

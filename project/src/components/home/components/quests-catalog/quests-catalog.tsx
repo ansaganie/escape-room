@@ -1,11 +1,11 @@
-import { ReactComponent as IconAllQuests } from 'assets/img/icon-all-quests.svg';
-import { ReactComponent as IconAdventures } from 'assets/img/icon-adventures.svg';
-import { ReactComponent as IconHorrors } from 'assets/img/icon-horrors.svg';
-import { ReactComponent as IconMystic } from 'assets/img/icon-mystic.svg';
-import { ReactComponent as IconDetective } from 'assets/img/icon-detective.svg';
-import { ReactComponent as IconScifi } from 'assets/img/icon-scifi.svg';
-import { ReactComponent as IconPerson } from 'assets/img/icon-person.svg';
-import { ReactComponent as IconPuzzle } from 'assets/img/icon-puzzle.svg';
+import { ReactComponent as IconAllQuests } from '../../../../assets/img/icon-all-quests.svg';
+import { ReactComponent as IconAdventures } from '../../../../assets/img/icon-adventures.svg';
+import { ReactComponent as IconHorrors } from '../../../../assets/img/icon-horrors.svg';
+import { ReactComponent as IconMystic } from '../../../../assets/img/icon-mystic.svg';
+import { ReactComponent as IconDetective } from '../../../../assets/img/icon-detective.svg';
+import { ReactComponent as IconScifi } from '../../../../assets/img/icon-scifi.svg';
+import { ReactComponent as IconPerson } from '../../../../assets/img/icon-person.svg';
+import { ReactComponent as IconPuzzle } from '../../../../assets/img/icon-puzzle.svg';
 import * as S from './quests-catalog.styled';
 
 function QuestsCatalog(): JSX.Element {
@@ -13,7 +13,7 @@ function QuestsCatalog(): JSX.Element {
     <>
       <S.Tabs>
         <S.TabItem>
-          <S.TabBtn>
+          <S.TabBtn active>
             <IconAllQuests />
             <S.TabTitle>Все квесты</S.TabTitle>
           </S.TabBtn>

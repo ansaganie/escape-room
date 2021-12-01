@@ -1,5 +1,5 @@
 import { MainLayout, PageTitle, PageSubtext } from '../common/common';
-import contactsMap from 'assets/img/contacts-map.jpg';
+import contactsMap from '../../assets/img/contacts-map.jpg';
 import * as S from './contacts.styled';
 
 function Contacts(): JSX.Element {

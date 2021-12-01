@@ -3,7 +3,8 @@ import { ChildrenProp } from '../../../types/children-prop';
 import * as S from './button.styled';
 
 type Props = ChildrenProp & {
-  onClick: () => void,
+  onClick?: () => void,
+  type: 'button' | 'submit' | 'reset' | undefined,
 }
 
 function Button({ children, ...props }: Props): JSX.Element {

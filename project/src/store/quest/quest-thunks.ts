@@ -1,7 +1,9 @@
+import { AxiosError } from 'axios';
+import appToast from '../../packages/app-toast';
 import { Quest, QuestId } from '../../models/quest';
-import { mapQuestsToClient, mapQuestToClient } from '../../services/quest-mapper';
 import { BackendRoutes } from '../../constants';
 import { AsyncAction } from './../store';
+import { mapQuestsToClient, mapQuestToClient } from '../../services/quest-mapper';
 import { addQuest, setQuestLoading, setQuests, setQuestsLoading } from './quest-slice';
 
 const fetchQuests = (): AsyncAction =>
@@ -13,8 +15,7 @@ const fetchQuests = (): AsyncAction =>
 
       dispatch(setQuests(mapQuestsToClient(response.data)));
     } catch (error) {
-      // eslint-disable-next-line no-console
-      console.error(error);
+      appToast.error((error as AxiosError).response?.data);
     } finally {
       dispatch(setQuestsLoading(false));
     }
@@ -29,8 +30,7 @@ const fetchQuest = (questId: QuestId): AsyncAction =>
 
       dispatch(addQuest(mapQuestToClient(response.data)));
     } catch (error) {
-      // eslint-disable-next-line no-console
-      console.error(error);
+      appToast.error((error as AxiosError).response?.data);
     } finally {
       dispatch(setQuestLoading(false));
     }

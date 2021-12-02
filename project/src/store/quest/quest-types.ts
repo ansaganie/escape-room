@@ -1,9 +1,10 @@
-import { Quest } from './../../models/quest';
-import { QuestTypes } from '../../constants';
+import { Quest, QuestId } from './../../models/quest';
+import { QuestType } from '../../constants';
 
 export type QuestState = {
-  questType: QuestTypes,
+  questType: QuestType,
   quests: Quest[],
+  notFoundQuestId: QuestId,
   questsLoading: boolean,
   questLoading: boolean,
 }

@@ -10,7 +10,7 @@ const appSlice = createSlice({
   name: SliceNames.App,
   initialState,
   reducers: {
-    setServerNotWorking:  (state) => {
+    setServerNotWorking: (state) => {
       state.serverNotWorking = true;
     },
   },

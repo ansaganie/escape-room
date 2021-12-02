@@ -1,4 +1,4 @@
-import { Action, combineReducers, configureStore, ThunkAction, ThunkDispatch } from '@reduxjs/toolkit';
+import { Action, combineReducers, configureStore, ThunkAction } from '@reduxjs/toolkit';
 import axios, { AxiosError, AxiosInstance, AxiosResponse } from 'axios';
 import { AXIOS_DEFAULT_CONFIG, HttpCode } from '../constants';
 import { SliceNames } from './constants';
@@ -44,6 +44,5 @@ api.interceptors.response.use(
 export type RootState = ReturnType<typeof store.getState>
 export type AppDispatch = typeof store.dispatch;
 export type AsyncAction<R = Promise<void>> = ThunkAction<R, RootState, AxiosInstance, Action>
-export type AsyncDispatch = ThunkDispatch<RootState, AxiosInstance, Action>;
 
 export default store;

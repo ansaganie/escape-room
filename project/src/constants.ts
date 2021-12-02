@@ -14,7 +14,7 @@ enum HttpCode {
   NotFound = 404,
 }
 
-enum QuestTypes {
+enum QuestType {
   All = 'all',
   Horror = 'horror',
   Mystic = 'mystic',
@@ -32,6 +32,6 @@ const BackendRoutes = {
 export {
   AXIOS_DEFAULT_CONFIG,
   HttpCode,
-  QuestTypes,
+  QuestType,
   BackendRoutes
 };

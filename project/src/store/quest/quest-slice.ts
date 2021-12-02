@@ -1,12 +1,13 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { SliceNames } from '../constants';
 import { QuestState } from './quest-types';
-import { QuestTypes } from '../../constants';
-import { Quest } from '../../models/quest';
+import { QuestType } from '../../constants';
+import { Quest, QuestId } from '../../models/quest';
 
 const initialState: QuestState = {
-  questType: QuestTypes.All,
+  questType: QuestType.All,
   quests: [],
+  notFoundQuestId: '',
   questsLoading: false,
   questLoading: false,
 };
@@ -15,7 +16,7 @@ const questSlice = createSlice({
   name: SliceNames.Quest,
   initialState,
   reducers: {
-    setQuestType: (state, action: PayloadAction<QuestTypes>) => {
+    setQuestType: (state, action: PayloadAction<QuestType>) => {
       state.questType = action.payload;
     },
     setQuests:  (state, action: PayloadAction<Quest[]>) => {
@@ -23,6 +24,9 @@ const questSlice = createSlice({
     },
     addQuest:  (state, action: PayloadAction<Quest>) => {
       state.quests.push(action.payload);
+    },
+    setNotFoundQuestId:  (state, action: PayloadAction<QuestId>) => {
+      state.notFoundQuestId = (action.payload);
     },
     setQuestsLoading:  (state, action: PayloadAction<boolean>) => {
       state.questsLoading = action.payload;
@@ -39,6 +43,7 @@ export const {
   setQuestType,
   setQuests,
   addQuest,
+  setNotFoundQuestId,
   setQuestsLoading,
   setQuestLoading,
 } = questSlice.actions;

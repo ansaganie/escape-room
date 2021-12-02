@@ -1,10 +1,10 @@
-import { QuestTypes } from '../constants';
+import { QuestType } from '../constants';
 
-export type QuestLevel = [ 'easy', 'medium', 'hard'];
+export type QuestLevel = [ 'easy', 'medium', 'hard' ];
 
 export type QuestId = string;
 
-type PeopleCount = [ number, number];
+type PeopleCount = [ number, number ];
 
 export type Quest = {
   id: QuestId,
@@ -12,7 +12,7 @@ export type Quest = {
   description: string,
   previewImg: string,
   coverImg: string,
-  type: QuestTypes,
+  type: QuestType,
   level: QuestLevel,
   peopleCount: PeopleCount,
   duration: number,

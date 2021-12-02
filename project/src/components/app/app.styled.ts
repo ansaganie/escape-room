@@ -5,9 +5,8 @@ import RalewaySemiBoldWoff2 from '../../assets/fonts/raleway-semibold.woff2';
 import RalewayBoldWoff2 from '../../assets/fonts/raleway-bold.woff2';
 import RalewayExtraBoldWoff2 from '../../assets/fonts/raleway-extrabold.woff2';
 import RalewayBlackWoff2 from '../../assets/fonts/raleway-black.woff2';
-import { AppTheme } from './common';
 
-const GlobalStyle = createGlobalStyle<{ theme: AppTheme}>`
+const GlobalStyle = createGlobalStyle`
   @font-face {
     font-family: 'Raleway';
     font-style: normal;

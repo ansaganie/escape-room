@@ -1,13 +1,6 @@
-type StringString = {
-  [key: string]: string,
-}
+import { DefaultTheme } from 'styled-components';
 
-export type AppTheme = {
-  [key: string]: StringString,
-}
-
-
-const appTheme: AppTheme = {
+const appTheme: DefaultTheme = {
   font: {
     mini: '12px',
     small: '13px',

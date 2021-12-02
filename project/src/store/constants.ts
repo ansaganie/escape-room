@@ -1,4 +1,5 @@
 enum SliceNames {
+  App = 'app',
   Quest = 'quest',
 }
 

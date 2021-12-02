@@ -1,11 +1,6 @@
 import axios from 'axios';
+import { AXIOS_DEFAULT_CONFIG } from '../constants';
 
-const BACKEND_URL = 'http://localhost:3001';
-const TIMEOUT = 5000;
-
-const api = axios.create({
-  baseURL: BACKEND_URL,
-  timeout: TIMEOUT,
-});
+const api = axios.create(AXIOS_DEFAULT_CONFIG);
 
 export default api;

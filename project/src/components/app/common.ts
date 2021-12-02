@@ -11,6 +11,7 @@ const appTheme: DefaultTheme = {
     formsHeading: '32px',
     semilarge: '64px',
     large: '92px',
+    extralarge: '200px',
   },
   color: {
     white: '#FFFFFF',

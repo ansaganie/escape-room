@@ -23,6 +23,12 @@ enum QuestType {
   SciFi = 'sci-fi',
 }
 
+const AppRoute = {
+  Home: '/',
+  DetailedQuest: '/quest/:questId',
+  Contacts: '/contacts',
+};
+
 const BackendRoutes = {
   Quests: '/quests',
   Orders: '/orders',
@@ -33,5 +39,6 @@ export {
   AXIOS_DEFAULT_CONFIG,
   HttpCode,
   QuestType,
+  AppRoute,
   BackendRoutes
 };

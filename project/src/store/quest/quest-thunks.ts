@@ -4,20 +4,18 @@ import { Quest, QuestId } from '../../models/quest';
 import { BackendRoutes, HttpCode } from '../../constants';
 import { AsyncAction } from './../store';
 import { mapQuestsToClient, mapQuestToClient } from '../../services/quest-mapper';
-import { addQuest, setNotFoundQuestId, setQuestLoading, setQuests, setQuestsLoading } from './quest-slice';
+import { addQuest, setNotFoundQuestId, setQuestLoading, setQuests } from './quest-slice';
 
 const fetchQuests = (): AsyncAction =>
   async (dispatch, _getState, api ): Promise<void> => {
-    dispatch(setQuestsLoading(true));
-
     try {
       const response = await api.get<Quest[]>(BackendRoutes.Quests);
 
       dispatch(setQuests(mapQuestsToClient(response.data)));
+
+      return Promise.resolve();
     } catch (error) {
       appToast.error((error as AxiosError).response?.data);
-    } finally {
-      dispatch(setQuestsLoading(false));
     }
   };
 

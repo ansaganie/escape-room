@@ -1,6 +1,10 @@
 import { QuestType } from '../constants';
 
-export type QuestLevel = [ 'easy', 'medium', 'hard' ];
+export enum QuestLevel {
+  Easy = 'easy',
+  Medium = 'medium',
+  Hard = 'hard',
+}
 
 export type QuestId = string;
 

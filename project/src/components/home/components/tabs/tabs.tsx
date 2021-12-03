@@ -1,24 +1,28 @@
-import React, { useCallback } from 'react';
-import { QuestType } from '../../../../constants';
-import { useAppDispatch, useAppSelector } from '../../../../hooks/redux';
-import { getQuestType } from '../../../../store/quest/quest-selectors';
-import { setQuestType } from '../../../../store/quest/quest-slice';
-import TabsPure from './tabs-pure';
+import React, { memo } from 'react';
+import * as S from './tabs.styled';
+import { QuestType, TABS } from '../../../../constants';
+import TabItem from '../tab-item/tab-item';
 
-function Tabs(): JSX.Element {
-  const dispatch = useAppDispatch();
-  const currentQuestType = useAppSelector(getQuestType);
+type Props = {
+  setQuestType: (questType: QuestType) => void,
+  questType: QuestType,
+}
 
-  const setCurrentQuestType = useCallback((questType: QuestType) => {
-    dispatch(setQuestType(questType));
-  }, [ dispatch ]);
-
+function Tabs({ setQuestType, questType}: Props): JSX.Element {
   return (
-    <TabsPure
-      setQuestType={setCurrentQuestType}
-      activeQuestType={currentQuestType}
-    />
+    <S.Tabs>
+      {Object.values(TABS).map(({ type, title, icon }) => (
+        <TabItem
+          key={type}
+          type={type}
+          title={title}
+          isActive={questType === type}
+          setQuestType={setQuestType}
+          icon={icon}
+        />
+      ))}
+    </S.Tabs>
   );
 }
 
-export default Tabs;
+export default memo(Tabs);

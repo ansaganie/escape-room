@@ -7,9 +7,18 @@ import { appTheme } from './common';
 import * as S from './app.styled';
 import { AppRoute } from '../../constants';
 import NotFound from '../not-found/not-found';
+import { useAppSelector } from '../../hooks/redux';
+import { getServerNotWorking } from '../../store/app/app-selectors';
+import ServerNotWorking from '../server-not-working/server-not-working';
 
 
 function App(): JSX.Element {
+  const serverNotWorking = useAppSelector(getServerNotWorking);
+
+  if (serverNotWorking) {
+    return <ServerNotWorking />;
+  }
+
   return (
     <ThemeProvider theme={appTheme}>
       <S.GlobalStyle />

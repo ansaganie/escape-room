@@ -2,14 +2,8 @@ import React from 'react';
 import { ReactComponent as IconPerson } from '../../../../assets/img/icon-person.svg';
 import { ReactComponent as IconPuzzle } from '../../../../assets/img/icon-puzzle.svg';
 import * as S from './quest-card.styled';
-import { Quest, QuestLevel } from '../../../../models/quest';
-import { AppRoute } from '../../../../constants';
-
-const QuestLevelTitle = {
-  [QuestLevel.Easy]: 'легкий',
-  [QuestLevel.Medium]: 'средний',
-  [QuestLevel.Hard]: 'сложный',
-};
+import { Quest } from '../../../../models/quest';
+import { AppRoute, QuestLevelTitle } from '../../../../constants';
 
 type Props = {
   quest: Quest,

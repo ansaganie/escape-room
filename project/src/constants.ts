@@ -1,4 +1,4 @@
-import { QuestId } from './models/quest';
+import { QuestId, QuestLevel } from './models/quest';
 import IconAllQuests from './assets/img/icon-all-quests.svg';
 import IconAdventures from './assets/img/icon-adventures.svg';
 import IconHorrors from './assets/img/icon-horrors.svg';
@@ -96,6 +96,12 @@ const TABS = {
   },
 };
 
+const QuestLevelTitle = {
+  [QuestLevel.Easy]: 'легкий',
+  [QuestLevel.Medium]: 'средний',
+  [QuestLevel.Hard]: 'сложный',
+};
+
 export {
   AXIOS_DEFAULT_CONFIG,
   HttpCode,
@@ -103,5 +109,6 @@ export {
   AppRoute,
   BackendRoutes,
   Menu,
-  TABS
+  TABS,
+  QuestLevelTitle
 };

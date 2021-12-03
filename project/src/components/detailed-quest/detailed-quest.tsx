@@ -1,15 +1,18 @@
-import { useState } from 'react';
+import React, { useCallback, useState } from 'react';
+import { useParams } from 'react-router';
+import { FormikHelpers } from 'formik';
+import * as S from './detailed-quest.styled';
 import { MainLayout } from '../common/common';
 import { ReactComponent as IconClock } from '../../assets/img/icon-clock.svg';
 import { ReactComponent as IconPerson } from '../../assets/img/icon-person.svg';
 import { ReactComponent as IconPuzzle } from '../../assets/img/icon-puzzle.svg';
-import * as S from './detailed-quest.styled';
 import { BookingModal } from './components/components';
-import { useParams } from 'react-router';
 import useQuestLoader from '../../hooks/use-quest-loader';
+import { QuestLevelTitle, TABS } from '../../constants';
+import { OrderForm } from '../../models/order-form';
 import NotFound from '../not-found/not-found';
 import Loader from '../common/loader/loader';
-import { QuestLevelTitle, TABS } from '../../constants';
+import { postOrder } from '../../services/dal/quests';
 
 function DetailedQuest(): JSX.Element | null {
   const { questId } = useParams<{ questId: string}>();
@@ -17,9 +20,24 @@ function DetailedQuest(): JSX.Element | null {
 
   const [ isBookingModalOpened, setIsBookingModalOpened ] = useState(false);
 
-  const onBookingBtnClick = () => {
+  const handleBookingButtonClick = useCallback(() => {
     setIsBookingModalOpened(true);
-  };
+  }, []) ;
+
+  const handleModalCloseClick = useCallback(() => {
+    setIsBookingModalOpened(false);
+  }, []) ;
+
+  const handleFormSubmit = useCallback((values: OrderForm, formikHelper: FormikHelpers<OrderForm>) => {
+    postOrder(values)
+      .then(() => {
+        formikHelper.resetForm();
+        setIsBookingModalOpened(false);
+      })
+      .catch(() => {
+        formikHelper.setSubmitting(false);
+      });
+  }, []);
 
   if (notFound) {
     return <NotFound />;
@@ -72,10 +90,17 @@ function DetailedQuest(): JSX.Element | null {
 
                   <S.QuestDescription>{description}</S.QuestDescription>
 
-                  <S.QuestBookingBtn onClick={onBookingBtnClick}>Забронировать</S.QuestBookingBtn>
+                  <S.QuestBookingBtn onClick={handleBookingButtonClick}>Забронировать</S.QuestBookingBtn>
                 </S.PageDescription>
               </S.PageContentWrapper>
-              {isBookingModalOpened && <BookingModal />}
+              {isBookingModalOpened && (
+                <BookingModal
+                  onCloseClick={handleModalCloseClick}
+                  onFormSubmit={handleFormSubmit}
+                  peopleCountMin={min}
+                  peopleCountMax={max}
+                />
+              )}
             </S.Main>
           )}
 

@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, MouseEvent } from 'react';
 import { Formik, FormikHelpers } from 'formik';
 import * as Yup from 'yup';
 import * as S from './booking-modal.styled';
@@ -17,6 +17,7 @@ const initial: OrderForm = {
 
 type Props = {
   onCloseClick: () => void,
+  onOverlayClick: () => void,
   onFormSubmit: (
     data: OrderForm,
     formikHelpers: FormikHelpers<OrderForm>,
@@ -27,6 +28,7 @@ type Props = {
 
 function BookingModal({
   onCloseClick,
+  onOverlayClick,
   onFormSubmit,
   peopleCountMin,
   peopleCountMax,
@@ -45,9 +47,13 @@ function BookingModal({
       .matches(PHONE_NUMBER_PATTERN, ''),
   }), [ peopleCountMax, peopleCountMin ]);
 
+  const handleModalClick = (evt: MouseEvent) => {
+    evt.stopPropagation();
+  };
+
   return (
-    <S.BlockLayer>
-      <S.Modal>
+    <S.BlockLayer onClick={onOverlayClick}>
+      <S.Modal onClick={handleModalClick}>
         <S.ModalCloseBtn
           onClick={onCloseClick}
         >

@@ -20,13 +20,36 @@ function DetailedQuest(): JSX.Element | null {
 
   const [ isBookingModalOpened, setIsBookingModalOpened ] = useState(false);
 
-  const handleBookingButtonClick = useCallback(() => {
+  const handleEscapePress = useCallback(
+    (evt: globalThis.KeyboardEvent): void => {
+      if (evt.key === 'Escape') {
+        setIsBookingModalOpened(false);
+        document.removeEventListener('keydown', handleEscapePress);
+      }
+    },
+    [],
+  );
+
+  const closeModal = useCallback(() => {
+    setIsBookingModalOpened(false);
+  }, []);
+
+  const openModal = useCallback(() => {
     setIsBookingModalOpened(true);
-  }, []) ;
+    document.addEventListener('keydown', handleEscapePress);
+  }, [ handleEscapePress ]);
+
+  const handleBookingButtonClick = useCallback(() => {
+    openModal();
+  }, [ openModal ]);
 
   const handleModalCloseClick = useCallback(() => {
-    setIsBookingModalOpened(false);
-  }, []) ;
+    closeModal();
+  }, [ closeModal ]);
+
+  const handleModalOverlayClick = useCallback(() => {
+    closeModal();
+  }, [ closeModal ]);
 
   const handleFormSubmit = useCallback((values: OrderForm, formikHelper: FormikHelpers<OrderForm>) => {
     postOrder(values)
@@ -96,6 +119,7 @@ function DetailedQuest(): JSX.Element | null {
               {isBookingModalOpened && (
                 <BookingModal
                   onCloseClick={handleModalCloseClick}
+                  onOverlayClick={handleModalOverlayClick}
                   onFormSubmit={handleFormSubmit}
                   peopleCountMin={min}
                   peopleCountMax={max}

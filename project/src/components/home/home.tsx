@@ -23,9 +23,11 @@ function HomePage(): JSX.Element {
   useEffect(() => {
     if (!allQuests.length) {
       dispatch(fetchQuests())
-        .then(() => {
+        .finally(() => {
           setQuestsLoading(false);
         });
+    } else {
+      setQuestsLoading(false);
     }
   }, [ dispatch, allQuests ]);
 

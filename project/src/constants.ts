@@ -32,6 +32,8 @@ enum QuestType {
 const AppRoute = {
   Home: '/',
   DetailedQuest: '/quest/:questId',
+  Newcomers: '/for-newcomers',
+  Reviews: '/reviews',
   Contacts: '/contacts',
   getQuestLink: (questId: QuestId): string => `/quest/${questId}`,
 };
@@ -41,6 +43,25 @@ const BackendRoutes = {
   Orders: '/orders',
   getQuestLink: (questId: QuestId): string => `/quests/${questId}`,
 };
+
+const Menu = [
+  {
+    link: AppRoute.Home,
+    title: 'Квесты',
+  },
+  {
+    link: AppRoute.Newcomers,
+    title: 'Новичкам',
+  },
+  {
+    link: '/reviews',
+    title: 'Отзывы',
+  },
+  {
+    link: AppRoute.Contacts,
+    title: 'Контакты',
+  },
+];
 
 const TABS = {
   [QuestType.All]: {
@@ -81,5 +102,6 @@ export {
   QuestType,
   AppRoute,
   BackendRoutes,
+  Menu,
   TABS
 };

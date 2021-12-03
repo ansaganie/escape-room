@@ -1,5 +1,7 @@
-import styled, { css } from 'styled-components';
-import { Container, Link as RouterLink } from '../../../components/common/common';
+import styled from 'styled-components';
+import { Container, Link as RouterLink, NavLink } from '../../../components/common/common';
+
+const activeClassName = 'nav-link-active';
 
 const StyledHeader = styled.header`
   z-index: 5;
@@ -21,14 +23,6 @@ const HeaderWrapper = styled(Container)`
   padding-right: 33px;
   padding-bottom: 23px;
   padding-left: 32px;
-`;
-
-const Logo = styled.a`
-  margin-right: 250px;
-
-  @media (max-width: 1300px) {
-    margin-right: auto;
-  }
 `;
 
 const LogoLink = styled(RouterLink)`
@@ -64,7 +58,9 @@ const LinkItem = styled.li`
   }
 `;
 
-const Link = styled(RouterLink)<{ active: boolean }>`
+const Link = styled(NavLink).attrs({
+  activeClassName,
+})`
   display: block;
   max-width: 100px;
   font-size: ${({ theme }) => theme.font.semibase};
@@ -75,11 +71,9 @@ const Link = styled(RouterLink)<{ active: boolean }>`
 
   color: ${({ theme }) => theme.color.whiteSmoke};
 
-  ${({ active }) =>
-    active &&
-    css`
-      color: ${({ theme }) => theme.color.tangerine};
-    `}
+  &.${activeClassName} {
+    color: ${({ theme }) => theme.color.tangerine};
+  }
 
   &:focus,
   &:hover {
@@ -107,7 +101,6 @@ const Phone = styled.a`
 export {
   StyledHeader,
   HeaderWrapper,
-  Logo,
   LogoLink,
   Navigation,
   Image,

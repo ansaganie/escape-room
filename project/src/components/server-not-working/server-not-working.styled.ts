@@ -23,7 +23,6 @@ const Main = styled(Container)`
     left: 0;
     width: 100vw;
     height: 80px;
-
     background: linear-gradient(180deg, rgba(19, 18, 18, 0) 0%, #131212 100%);
     opacity: 0.8;
     pointer-events: none;

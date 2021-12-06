@@ -14,9 +14,9 @@ function NotFound(): JSX.Element {
     <MainLayout>
       <S.Main>
         <S.Title>404</S.Title>
-        <PageTitle>Мы не нашли страницу который вы запрашиваете.</PageTitle>
+        <PageTitle>Мы не нашли страницу который вы запрашиваете</PageTitle>
         <Link to={AppRoute.Home}>
-          <PageSubtext>Вернуться домой  </PageSubtext>
+          <PageSubtext>Вернуться домой</PageSubtext>
         </Link>
       </S.Main>
     </MainLayout>

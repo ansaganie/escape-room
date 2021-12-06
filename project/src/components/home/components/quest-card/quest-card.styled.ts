@@ -29,13 +29,11 @@ const Quest = styled.article`
     left: 0;
     width: 100%;
     height: 160px;
-
     background-image: linear-gradient(
       0.36deg,
       rgba(28, 27, 27, 0.9) 5.23%,
       rgba(46, 46, 46, 0) 98.38%
     );
-
     border-radius: 3px;
   }
 `;
@@ -43,7 +41,6 @@ const Quest = styled.article`
 const QuestContent = styled.div`
   position: relative;
   z-index: 3;
-
   display: flex;
   flex-direction: column;
   padding: 20px;
@@ -56,7 +53,6 @@ const QuestTitle = styled.h2`
   margin: 0;
   margin-bottom: 16px;
   padding: 0;
-
   font-size: ${({ theme }) => theme.font.medium};
   line-height: 120%;
   font-weight: 700;
@@ -70,7 +66,6 @@ const QuestImage = styled.img`
   position: absolute;
   top: 0;
   left: 0;
-
   width: 100%;
   height: 100%;
   border-radius: 4px;
@@ -78,7 +73,6 @@ const QuestImage = styled.img`
 
 const QuestFeatures = styled.ul`
   display: flex;
-
   margin: 0;
   padding: 0;
   list-style: none;
@@ -92,7 +86,6 @@ const QuestFeatureItem = styled.li`
   max-height: 50px;
   word-break: break-word;
   overflow: hidden;
-
   font-size: ${({ theme }) => theme.font.small};
   line-height: 144%;
   color: ${({ theme }) => theme.color.whisper2};

@@ -78,7 +78,7 @@ const ErrorMessageContainer = styled.div`
 color: orange;
 `;
 
-const BookingField = styled.p`
+const BookingField = styled.div`
   display: flex;
   flex-direction: column;
 

@@ -23,7 +23,6 @@ const Main = styled(Container)`
     left: 0;
     width: 100vw;
     height: 80px;
-
     background: linear-gradient(180deg, rgba(19, 18, 18, 0) 0%, #131212 100%);
     opacity: 0.8;
     pointer-events: none;
@@ -33,7 +32,6 @@ const Main = styled(Container)`
 const Title = styled.h1`
   margin: 0;
   padding: 0;
-
   font-size: ${({ theme }) => theme.font.extralarge};
   line-height: 110%;
   font-weight: 800;

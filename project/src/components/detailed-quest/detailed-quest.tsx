@@ -7,13 +7,13 @@ import { ReactComponent as IconClock } from '../../assets/img/icon-clock.svg';
 import { ReactComponent as IconPerson } from '../../assets/img/icon-person.svg';
 import { ReactComponent as IconPuzzle } from '../../assets/img/icon-puzzle.svg';
 import { BookingModal } from './components/components';
-import useQuestLoader from '../../hooks/use-quest-loader';
 import { QuestLevelTitle, TABS } from '../../constants';
 import { OrderForm } from '../../models/order-form';
+import usePageTitle from '../../hooks/use-page-title';
+import useQuestLoader from '../../hooks/use-quest-loader';
+import { postOrder } from '../../services/dal/quests-dal';
 import NotFound from '../not-found/not-found';
 import Loader from '../common/loader/loader';
-import { postOrder } from '../../services/dal/quests-dal';
-import usePageTitle from '../../hooks/use-page-title';
 
 const getPageTitle = (title?: string) => {
   const titlePrefix = 'Escape Room';
@@ -65,15 +65,15 @@ function DetailedQuest(): JSX.Element | null {
 
   const handleFormSubmit = useCallback((
     values: OrderForm,
-    formikHelper: FormikHelpers<OrderForm>,
+    formikHelpers: FormikHelpers<OrderForm>,
   ) => {
     postOrder(values)
       .then(() => {
-        formikHelper.resetForm();
+        formikHelpers.resetForm();
         setIsBookingModalOpened(false);
       })
       .catch(() => {
-        formikHelper.setSubmitting(false);
+        formikHelpers.setSubmitting(false);
       });
   }, []);
 

@@ -5,7 +5,11 @@ import * as S from './contacts.styled';
 const CONTACT = {
   Address: {
     title: 'Адрес',
-    addresses: ['Санкт-Петербург,', 'Набережная реки Карповка, д 5'],
+    value: {
+      cityName: 'Санкт-Петербург',
+      streetName: 'Набережная реки Карповка',
+      houseNumber: 5,
+    },
   },
   Regime: {
     title: 'Режим работы',
@@ -42,9 +46,10 @@ function Contacts(): JSX.Element {
             <S.ContactsList>
               <S.ContactTitle>{CONTACT.Address.title}</S.ContactTitle>
               <S.ContactValue>
-                {CONTACT.Address.addresses.map((address) => (
-                  <S.ContactAddress key={address}>{address}</S.ContactAddress>
-                ))}
+                <S.ContactAddress>{`${CONTACT.Address.value.cityName},`}</S.ContactAddress>
+                <S.ContactAddress>
+                  {`${CONTACT.Address.value.streetName}, д ${CONTACT.Address.value.houseNumber}`}
+                </S.ContactAddress>
               </S.ContactValue>
               <S.ContactTitle>{CONTACT.Regime.title}</S.ContactTitle>
               <S.ContactValue>{CONTACT.Regime.value}</S.ContactValue>

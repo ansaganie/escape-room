@@ -8,7 +8,7 @@ import * as S from './server-not-working.styled';
 function ServerNotWorking(): JSX.Element {
   return (
     <S.Main>
-      <PageTitle>Мы не нашли страницу который вы запрашиваете</PageTitle>
+      <PageTitle>Наш сайт временно не работает, попробуйте зайти позже</PageTitle>
     </S.Main>
   );
 }

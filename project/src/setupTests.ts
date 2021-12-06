@@ -3,3 +3,19 @@
 // expect(element).toHaveTextContent(/react/i)
 // learn more: https://github.com/testing-library/jest-dom
 import '@testing-library/jest-dom';
+import { QuestType } from './constants';
+import { RootState } from './store/store';
+
+const mockState: RootState = {
+  app: {
+    serverNotWorking: false,
+  },
+  quest: {
+    notFoundQuestId: '',
+    questLoading: false,
+    questType: QuestType.All,
+    quests: [],
+  },
+};
+
+export { mockState };

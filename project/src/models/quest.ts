@@ -8,7 +8,7 @@ export enum QuestLevel {
 
 export type QuestId = string;
 
-type PeopleCount = [ number, number ];
+export type PeopleCount = [ number, number ];
 
 export type Quest = {
   id: QuestId,

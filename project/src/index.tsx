@@ -1,4 +1,5 @@
 import 'react-toastify/dist/ReactToastify.css';
+import 'leaflet/dist/leaflet.css';
 import React, { StrictMode } from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';

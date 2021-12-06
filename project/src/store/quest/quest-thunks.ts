@@ -31,7 +31,7 @@ const fetchQuest = (questId: QuestId): AsyncAction =>
       const axiosError = error as AxiosError;
 
       if (axiosError.response?.status === HttpCode.NotFound) {
-        setNotFoundQuestId(questId);
+        dispatch(setNotFoundQuestId(questId));
       } else {
         appToast.error(axiosError.response?.data);
       }

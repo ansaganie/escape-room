@@ -13,21 +13,32 @@ import { OrderForm } from '../../models/order-form';
 import NotFound from '../not-found/not-found';
 import Loader from '../common/loader/loader';
 import { postOrder } from '../../services/dal/quests-dal';
+import usePageTitle from '../../hooks/use-page-title';
+
+const getPageTitle = (title?: string) => {
+  const titlePrefix = 'Escape Room';
+
+  if (title) {
+    return `${titlePrefix}: ${title}`;
+  }
+
+  return titlePrefix;
+};
 
 function DetailedQuest(): JSX.Element | null {
   const { questId } = useParams<{ questId: string}>();
   const [ quest, loading, notFound ] = useQuestLoader(questId);
-
   const [ isBookingModalOpened, setIsBookingModalOpened ] = useState(false);
 
+  usePageTitle(getPageTitle(quest?.title));
+
   const handleEscapePress = useCallback(
-    (evt: globalThis.KeyboardEvent): void => {
+    (evt: KeyboardEvent): void => {
       if (evt.key === 'Escape') {
         setIsBookingModalOpened(false);
         document.removeEventListener('keydown', handleEscapePress);
       }
-    },
-    [],
+    }, [],
   );
 
   const closeModal = useCallback(() => {
@@ -52,7 +63,10 @@ function DetailedQuest(): JSX.Element | null {
     closeModal();
   }, [ closeModal ]);
 
-  const handleFormSubmit = useCallback((values: OrderForm, formikHelper: FormikHelpers<OrderForm>) => {
+  const handleFormSubmit = useCallback((
+    values: OrderForm,
+    formikHelper: FormikHelpers<OrderForm>,
+  ) => {
     postOrder(values)
       .then(() => {
         formikHelper.resetForm();
@@ -67,73 +81,69 @@ function DetailedQuest(): JSX.Element | null {
     return <NotFound />;
   }
 
-  if (quest) {
-    const {
-      coverImg,
-      title,
-      type,
-      duration,
-      peopleCount: [ min, max ],
-      level,
-      description,
-    } = quest;
-
-    return (
-      <MainLayout>
-        {loading
-          ? <Loader />
-          : (
-            <S.Main>
-              <S.PageImage
-                src={`../${coverImg}`}
-                alt={`Квест ${title}`}
-                width="1366"
-                height="768"
-              />
-              <S.PageContentWrapper>
-                <S.PageHeading>
-                  <S.PageTitle>{title}</S.PageTitle>
-                  <S.PageSubtitle>{TABS[type].title}</S.PageSubtitle>
-                </S.PageHeading>
-
-                <S.PageDescription>
-                  <S.Features>
-                    <S.FeaturesItem>
-                      <IconClock width="20" height="20" />
-                      <S.FeatureTitle>{`${duration} мин`}</S.FeatureTitle>
-                    </S.FeaturesItem>
-                    <S.FeaturesItem>
-                      <IconPerson width="19" height="24" />
-                      <S.FeatureTitle>{`${min}–${max} чел`}</S.FeatureTitle>
-                    </S.FeaturesItem>
-                    <S.FeaturesItem>
-                      <IconPuzzle width="24" height="24" />
-                      <S.FeatureTitle>{QuestLevelTitle[level]}</S.FeatureTitle>
-                    </S.FeaturesItem>
-                  </S.Features>
-
-                  <S.QuestDescription>{description}</S.QuestDescription>
-
-                  <S.QuestBookingBtn onClick={handleBookingButtonClick}>Забронировать</S.QuestBookingBtn>
-                </S.PageDescription>
-              </S.PageContentWrapper>
-              {isBookingModalOpened && (
-                <BookingModal
-                  onCloseClick={handleModalCloseClick}
-                  onOverlayClick={handleModalOverlayClick}
-                  onFormSubmit={handleFormSubmit}
-                  peopleCountMin={min}
-                  peopleCountMax={max}
-                />
-              )}
-            </S.Main>
-          )}
-
-      </MainLayout>
-    );
+  if (!quest) {
+    return null;
   }
 
-  return null;
+  const {
+    coverImg,
+    title,
+    type,
+    duration,
+    peopleCount: [ min, max ],
+    level,
+    description,
+  } = quest;
+
+  return (
+    <MainLayout>
+      {loading
+        ? <Loader />
+        : (
+          <S.Main>
+            <S.PageImage
+              src={`../${coverImg}`}
+              alt={`Квест ${title}`}
+              width="1366"
+              height="768"
+            />
+            <S.PageContentWrapper>
+              <S.PageHeading>
+                <S.PageTitle>{title}</S.PageTitle>
+                <S.PageSubtitle>{TABS[type].title}</S.PageSubtitle>
+              </S.PageHeading>
+              <S.PageDescription>
+                <S.Features>
+                  <S.FeaturesItem>
+                    <IconClock width="20" height="20" />
+                    <S.FeatureTitle>{`${duration} мин`}</S.FeatureTitle>
+                  </S.FeaturesItem>
+                  <S.FeaturesItem>
+                    <IconPerson width="19" height="24" />
+                    <S.FeatureTitle>{`${min}–${max} чел`}</S.FeatureTitle>
+                  </S.FeaturesItem>
+                  <S.FeaturesItem>
+                    <IconPuzzle width="24" height="24" />
+                    <S.FeatureTitle>{QuestLevelTitle[level]}</S.FeatureTitle>
+                  </S.FeaturesItem>
+                </S.Features>
+                <S.QuestDescription>{description}</S.QuestDescription>
+                <S.QuestBookingBtn onClick={handleBookingButtonClick}>Забронировать</S.QuestBookingBtn>
+              </S.PageDescription>
+            </S.PageContentWrapper>
+            {isBookingModalOpened && (
+              <BookingModal
+                onCloseClick={handleModalCloseClick}
+                onOverlayClick={handleModalOverlayClick}
+                onFormSubmit={handleFormSubmit}
+                peopleCountMin={min}
+                peopleCountMax={max}
+              />
+            )}
+          </S.Main>
+        )}
+    </MainLayout>
+  );
 }
 
 export default DetailedQuest;

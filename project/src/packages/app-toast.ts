@@ -1,3 +1,4 @@
+import { ReactText } from 'react';
 import { toast } from 'react-toastify';
 
 const appToast = {
@@ -10,8 +11,9 @@ const appToast = {
   success: (message: string): void => {
     toast.success(message);
   },
-  pending: (message: string): void => {
-    toast.loading(message);
+  pending: (message: string): ReactText => toast.loading(message),
+  remove: (toastId?: ReactText): void => {
+    toast.dismiss(toastId);
   },
 };
 

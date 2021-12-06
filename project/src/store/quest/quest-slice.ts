@@ -8,7 +8,6 @@ const initialState: QuestState = {
   questType: QuestType.All,
   quests: [],
   notFoundQuestId: '',
-  questsLoading: false,
   questLoading: false,
 };
 
@@ -28,9 +27,6 @@ const questSlice = createSlice({
     setNotFoundQuestId:  (state, action: PayloadAction<QuestId>) => {
       state.notFoundQuestId = (action.payload);
     },
-    setQuestsLoading:  (state, action: PayloadAction<boolean>) => {
-      state.questsLoading = action.payload;
-    },
     setQuestLoading:  (state, action: PayloadAction<boolean>) => {
       state.questLoading = action.payload;
     },
@@ -44,7 +40,6 @@ export const {
   setQuests,
   addQuest,
   setNotFoundQuestId,
-  setQuestsLoading,
   setQuestLoading,
 } = questSlice.actions;
 

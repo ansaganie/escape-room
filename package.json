@@ -7,7 +7,7 @@
     "joi": "17.4.2"
   },
   "scripts": {
-    "start:client": "cd project\n yarn start",
+    "start:client": "cd project && yarn start",
     "start:server": "node server/server",
     "start": "concurrently -k -p \"{name}\" -n \"CLIENT,SERVER\" -c \"green,blue\" \"npm:start:client\" \"npm:start:server\"",
     "build": "react-scripts build",

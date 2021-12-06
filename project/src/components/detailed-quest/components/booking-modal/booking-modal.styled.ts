@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Form, Field } from 'formik';
 import { Button } from '../../../common/common';
 import IconTick from '../../../../assets/img/icon-tick.svg';
 
@@ -68,12 +69,16 @@ const ModalTitle = styled.h2`
   color: ${({ theme }) => theme.color.white};
 `;
 
-const BookingForm = styled.form`
+const BookingForm = styled(Form)`
   display: flex;
   flex-direction: column;
 `;
 
-const BookingField = styled.p`
+const ErrorMessageContainer = styled.div`
+color: orange;
+`;
+
+const BookingField = styled.div`
   display: flex;
   flex-direction: column;
 
@@ -91,7 +96,7 @@ const BookingLabel = styled.label`
   color: ${({ theme }) => theme.color.whisper2};
 `;
 
-const BookingInput = styled.input`
+const BookingInput = styled(Field)`
   padding-top: 17px;
   padding-right: 24px;
   padding-bottom: 18px;
@@ -175,7 +180,7 @@ const BookingCheckboxLabel = styled.label`
   }
 `;
 
-const BookingCheckboxInput = styled.input.attrs({
+const BookingCheckboxInput = styled(Field).attrs({
   className: 'visually-hidden',
 })`
   top: 20px;
@@ -217,6 +222,7 @@ export {
   ModalCloseLabel,
   ModalTitle,
   BookingForm,
+  ErrorMessageContainer,
   BookingField,
   BookingLabel,
   BookingInput,

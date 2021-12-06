@@ -12,6 +12,7 @@ declare module 'styled-components' {
       formsHeading: string,
       semilarge: string,
       large: string,
+      extralarge: string,
     },
     color: {
       white: string,

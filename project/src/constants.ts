@@ -1,4 +1,10 @@
-import { QuestId } from './models/quest';
+import { QuestId, QuestLevel } from './models/quest';
+import IconAllQuests from './assets/img/icon-all-quests.svg';
+import IconAdventures from './assets/img/icon-adventures.svg';
+import IconHorrors from './assets/img/icon-horrors.svg';
+import IconMystic from './assets/img/icon-mystic.svg';
+import IconDetective from './assets/img/icon-detective.svg';
+import IconSciFi from './assets/img/icon-sci-fi.svg';
 
 const BACKEND_URL = 'http://localhost:3001';
 const TIMEOUT = 5000;
@@ -23,15 +29,86 @@ enum QuestType {
   SciFi = 'sci-fi',
 }
 
+const AppRoute = {
+  Home: '/',
+  DetailedQuest: '/quest/:questId',
+  Newcomers: '/for-newcomers',
+  Reviews: '/reviews',
+  Contacts: '/contacts',
+  getQuestLink: (questId: QuestId): string => `/quest/${questId}`,
+};
+
 const BackendRoutes = {
   Quests: '/quests',
   Orders: '/orders',
   getQuestLink: (questId: QuestId): string => `/quests/${questId}`,
 };
 
+const Menu = [
+  {
+    link: AppRoute.Home,
+    title: 'Квесты',
+  },
+  {
+    link: AppRoute.Newcomers,
+    title: 'Новичкам',
+  },
+  {
+    link: '/reviews',
+    title: 'Отзывы',
+  },
+  {
+    link: AppRoute.Contacts,
+    title: 'Контакты',
+  },
+];
+
+const TABS = {
+  [QuestType.All]: {
+    type: QuestType.All,
+    title: 'Все квесты',
+    icon: IconAllQuests,
+  },
+  [QuestType.Adventures]: {
+    type: QuestType.Adventures,
+    title: 'Приключения',
+    icon: IconAdventures,
+  },
+  [QuestType.Horror]: {
+    type: QuestType.Horror,
+    title: 'Ужасы',
+    icon: IconHorrors,
+  },
+  [QuestType.Mystic]: {
+    type: QuestType.Mystic,
+    title: 'Мистика',
+    icon: IconMystic,
+  },
+  [QuestType.Detective]: {
+    type: QuestType.Detective,
+    title: 'Детектив',
+    icon: IconDetective,
+  },
+  [QuestType.SciFi]: {
+    type: QuestType.SciFi,
+    title: 'Sci-fi',
+    icon:IconSciFi ,
+  },
+};
+
+const QuestLevelTitle = {
+  [QuestLevel.Easy]: 'легкий',
+  [QuestLevel.Medium]: 'средний',
+  [QuestLevel.Hard]: 'сложный',
+};
+
 export {
   AXIOS_DEFAULT_CONFIG,
   HttpCode,
   QuestType,
-  BackendRoutes
+  AppRoute,
+  BackendRoutes,
+  Menu,
+  TABS,
+  QuestLevelTitle
 };

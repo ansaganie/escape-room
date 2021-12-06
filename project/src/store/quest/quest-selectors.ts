@@ -6,7 +6,6 @@ import { RootState } from '../store';
 const getQuestType = (state: RootState): QuestType => state.quest.questType;
 const getAllQuests = (state: RootState): Quest[] => state.quest.quests;
 const getNotFoundQuestId = (state: RootState): QuestId => state.quest.notFoundQuestId;
-const getQuestsLoading = (state: RootState): boolean => state.quest.questsLoading;
 const getQuestLoading = (state: RootState): boolean => state.quest.questLoading;
 
 const getQuests = createSelector(
@@ -25,7 +24,6 @@ export {
   getQuestType,
   getAllQuests,
   getNotFoundQuestId,
-  getQuestsLoading,
   getQuestLoading,
   getQuests
 };

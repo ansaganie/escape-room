@@ -5,6 +5,5 @@ export type QuestState = {
   questType: QuestType,
   quests: Quest[],
   notFoundQuestId: QuestId,
-  questsLoading: boolean,
   questLoading: boolean,
 }

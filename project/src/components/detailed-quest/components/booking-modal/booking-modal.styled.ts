@@ -74,6 +74,10 @@ const BookingForm = styled(Form)`
   flex-direction: column;
 `;
 
+const ErrorMessageContainer = styled.div`
+color: orange;
+`;
+
 const BookingField = styled.p`
   display: flex;
   flex-direction: column;
@@ -218,6 +222,7 @@ export {
   ModalCloseLabel,
   ModalTitle,
   BookingForm,
+  ErrorMessageContainer,
   BookingField,
   BookingLabel,
   BookingInput,

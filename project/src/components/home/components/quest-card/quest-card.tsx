@@ -28,10 +28,8 @@ function QuestCard({ quest }: Props): JSX.Element {
             height="232"
             alt={`квест ${title}`}
           />
-
           <S.QuestContent>
             <S.QuestTitle>{title}</S.QuestTitle>
-
             <S.QuestFeatures>
               <S.QuestFeatureItem>
                 <IconPerson />

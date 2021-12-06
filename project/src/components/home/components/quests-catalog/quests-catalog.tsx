@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import Tabs from '../tabs/tabs';
+import TabsInfo from '../tabs/tabs';
 import { Quest } from '../../../../models/quest';
 import { QuestType } from '../../../../constants';
 import Loader from '../../../common/loader/loader';
@@ -8,25 +8,25 @@ import QuestsList from '../quests-list/quests-list';
 type Props = {
   quests: Quest[],
   setQuestType: (questType: QuestType) => void,
-  questType: QuestType,
+  selectedTab: QuestType,
   loading: boolean,
 }
 
 function QuestsCatalog({
   quests,
   setQuestType,
-  questType,
+  selectedTab,
   loading,
 }: Props): JSX.Element {
   return (
     <>
-      <Tabs
+      <TabsInfo
         setQuestType={setQuestType}
-        questType={questType}
+        selectedTab={selectedTab}
       />
       {loading
         ? <Loader />
-        : <QuestsList quests={quests} questType={questType} />}
+        : <QuestsList quests={quests} questType={selectedTab} />}
     </>
   );
 }

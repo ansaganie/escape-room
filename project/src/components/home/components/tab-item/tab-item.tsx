@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { QuestType } from '../../../../constants';
 import * as S from './tab-item.styled';
 
@@ -25,11 +25,11 @@ function TabItem({
   return (
     <S.TabItem onClick={handleTabClick}>
       <S.TabBtn active={isActive}>
-        <img src={icon} alt={title} />
+        <S.TabIcon width="40" height="30" src={icon} alt={title} />
         <S.TabTitle>{title}</S.TabTitle>
       </S.TabBtn>
     </S.TabItem>
   );
 }
 
-export default TabItem;
+export default memo(TabItem);

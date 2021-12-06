@@ -7,6 +7,7 @@ const MIN_DURATION = 50;
 const MAX_DURATION = 250;
 const MIN_PEOPLE_COUNT = 2;
 const MAX_PEOPLE_COUNT = 10;
+const QUESTS_COUNT = 15;
 
 const getRandomPeopleCount = (): PeopleCount => [
   getRandomInt(MIN_PEOPLE_COUNT, MAX_PEOPLE_COUNT),
@@ -25,4 +26,7 @@ const getFakeQuest = (): Quest => ({
   type: getRandomElement(Object.values(QuestType)),
 });
 
-export { getFakeQuest };
+const getFakeQuests = (count: number = QUESTS_COUNT) =>
+  new Array(count).fill(null).map(getFakeQuest);
+
+export { getFakeQuest, getFakeQuests };

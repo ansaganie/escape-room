@@ -16,7 +16,7 @@ import { getQuests, getQuestType } from '../../store/quest/quest-selectors';
 
 const PAGE_TITLE = 'Escape Room: квесты в Санкт-Петербурге';
 
-function HomePage(): JSX.Element {
+function Home(): JSX.Element {
   const dispatch = useAppDispatch();
   const quests = useAppSelector(getQuests);
   const currentQuestType = useAppSelector(getQuestType);
@@ -45,7 +45,7 @@ function HomePage(): JSX.Element {
         <QuestsCatalog
           quests={quests}
           setQuestType={setCurrentQuestType}
-          questType={currentQuestType}
+          selectedTab={currentQuestType}
           loading={questsLoading}
         />
       </S.Main>
@@ -53,4 +53,4 @@ function HomePage(): JSX.Element {
   );
 }
 
-export default HomePage;
+export default Home;

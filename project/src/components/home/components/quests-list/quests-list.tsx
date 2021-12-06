@@ -2,7 +2,7 @@ import React, { memo } from 'react';
 import * as S from './quests-list.styled';
 import { Quest } from '../../../../models/quest';
 import QuestCard from '../quest-card/quest-card';
-import { QuestType, TABS } from '../../../../constants';
+import { QuestType, TabsInfo } from '../../../../constants';
 
 const NO_QUEST_MESSAGE_ALL = 'К сожалению на данный момент у нас нет квестов';
 const NO_QUEST_MESSAGE = 'К сожалению на данный момент у нас нет квестов по тематике ';
@@ -22,7 +22,7 @@ function QuestsList({
 
     questType === QuestType.All
       ? message = NO_QUEST_MESSAGE_ALL
-      : message = `${NO_QUEST_MESSAGE}${TABS[questType].title}`;
+      : message = `${NO_QUEST_MESSAGE}${TabsInfo[questType].title}`;
 
     return <S.Message>{message}</S.Message>;
   }

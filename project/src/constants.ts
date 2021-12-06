@@ -63,7 +63,7 @@ const Menu = [
   },
 ];
 
-const TABS = {
+const TabsInfo = {
   [QuestType.All]: {
     type: QuestType.All,
     title: 'Все квесты',
@@ -109,6 +109,6 @@ export {
   AppRoute,
   BackendRoutes,
   Menu,
-  TABS,
+  TabsInfo,
   QuestLevelTitle
 };

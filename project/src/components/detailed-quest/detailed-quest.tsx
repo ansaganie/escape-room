@@ -12,7 +12,7 @@ import { QuestLevelTitle, TABS } from '../../constants';
 import { OrderForm } from '../../models/order-form';
 import NotFound from '../not-found/not-found';
 import Loader from '../common/loader/loader';
-import { postOrder } from '../../services/dal/quests';
+import { postOrder } from '../../services/dal/quests-dal';
 
 function DetailedQuest(): JSX.Element | null {
   const { questId } = useParams<{ questId: string}>();
@@ -32,7 +32,8 @@ function DetailedQuest(): JSX.Element | null {
 
   const closeModal = useCallback(() => {
     setIsBookingModalOpened(false);
-  }, []);
+    document.removeEventListener('keydown', handleEscapePress);
+  }, [ handleEscapePress ]);
 
   const openModal = useCallback(() => {
     setIsBookingModalOpened(true);

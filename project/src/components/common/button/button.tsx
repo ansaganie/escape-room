@@ -4,6 +4,7 @@ import * as S from './button.styled';
 
 type Props = ChildrenProp & {
   onClick?: () => void,
+  disabled?: boolean,
   type: 'button' | 'submit' | 'reset' | undefined,
 }
 

@@ -13,15 +13,15 @@ const postOrder = async (order: OrderForm): Promise<void> => {
   try {
     await api.post(BackendRoutes.Orders, order);
     appToast.success(POST_ORDER_SUCCESS);
-
+    // eslint-disable-next-line no-debugger
+    debugger;
     return Promise.resolve();
   } catch (error) {
     appToast.error((error as AxiosError).response?.data);
-
+    // eslint-disable-next-line no-debugger
+    debugger;
     return Promise.reject();
   }
 };
 
-export {
-  postOrder
-};
+export { postOrder };

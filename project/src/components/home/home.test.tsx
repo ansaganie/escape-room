@@ -5,14 +5,14 @@ import { configureMockStore } from '@jedmao/redux-mock-store';
 import MockAdapter from 'axios-mock-adapter';
 import { Router } from 'react-router';
 import { createMemoryHistory } from 'history';
-import { AppRoute, BackendRoutes, TabsInfo } from '../../constants';
+import { AppRoute, BackendRoutes, QuestType, TabsInfo } from '../../constants';
 import { mockState } from '../../setupTests';
 import { thunkApi } from '../../store/store';
 import { ThemeProvider } from 'styled-components';
 import { appTheme } from '../app/common';
 import Home from './home';
-import { deepClone } from '../../test-utils/common';
 import { getFakeQuests } from '../../test-utils/mock-data';
+import userEvent from '@testing-library/user-event';
 
 const axios = new MockAdapter(thunkApi);
 const middleware = [ thunk.withExtraArgument(thunkApi) ];
@@ -50,15 +50,13 @@ describe('Component: Home', () => {
 
   it('should render quest cards', async () => {
     await act(async () => {
-      const state = deepClone(mockState);
       const fakeQuests = getFakeQuests();
-      state.quest.quests = fakeQuests;
 
       axios.onGet(BackendRoutes.Quests)
         .reply(200, fakeQuests);
 
       const screen = render(
-        <Provider store={mockStore(state)}>
+        <Provider store={store}>
           <Router history={history}>
             <ThemeProvider theme={appTheme}>
               <Home />
@@ -69,6 +67,41 @@ describe('Component: Home', () => {
 
       fakeQuests.forEach(async ({ title }) => {
         expect(await screen.findByText(title)).toBeInTheDocument();
+      });
+    });
+  });
+
+  it('should render quest cards of chosen type', async () => {
+    await act(async () => {
+      const fakeQuests = getFakeQuests(40);
+      const mysticQuests = fakeQuests.filter(({ type }) => type === QuestType.Mystic);
+      const horrorQuests = fakeQuests.filter(({ type }) => type === QuestType.Horror);
+
+      axios.onGet(BackendRoutes.Quests)
+        .reply(200, fakeQuests);
+
+      const screen = render(
+        <Provider store={store}>
+          <Router history={history}>
+            <ThemeProvider theme={appTheme}>
+              <Home />
+            </ThemeProvider>
+          </Router>
+        </Provider>,
+      );
+
+      const button = screen.getByText(TabsInfo[QuestType.Mystic].title).parentElement;
+
+      if ( button) {
+        userEvent.click(button);
+      }
+
+      mysticQuests.forEach(async ({ title }) => {
+        expect(await screen.findByText(title)).toBeInTheDocument();
+      });
+
+      horrorQuests.forEach(({ title }) => {
+        expect(screen.queryByText(title)).not.toBeInTheDocument();
       });
     });
   });

@@ -25,7 +25,7 @@ function TabItem({
   return (
     <S.TabItem onClick={handleTabClick}>
       <S.TabBtn active={isActive}>
-        <S.TabIcon width="40" height="30" src={icon} alt={title} />
+        <S.TabIcon src={icon} alt={title} />
         <S.TabTitle>{title}</S.TabTitle>
       </S.TabBtn>
     </S.TabItem>

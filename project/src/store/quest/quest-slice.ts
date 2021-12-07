@@ -25,7 +25,7 @@ const questSlice = createSlice({
       state.quests.push(action.payload);
     },
     setNotFoundQuestId:  (state, action: PayloadAction<QuestId>) => {
-      state.notFoundQuestId = (action.payload);
+      state.notFoundQuestId = action.payload;
     },
     setQuestLoading:  (state, action: PayloadAction<boolean>) => {
       state.questLoading = action.payload;

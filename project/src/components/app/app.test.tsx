@@ -6,7 +6,7 @@ import { configureMockStore } from '@jedmao/redux-mock-store';
 import { Router } from 'react-router';
 import { createMemoryHistory } from 'history';
 import { AppRoute } from '../../constants';
-import { mockState } from '../../setupTests';
+import { testState } from '../../setupTests';
 import { thunkApi } from '../../store/store';
 import { getFakeQuest } from '../../test-utils/mock-data';
 import { deepClone } from '../../test-utils/common';
@@ -15,7 +15,7 @@ import App from './app';
 const middleware = [ thunk.withExtraArgument(thunkApi) ];
 
 const mockStore = configureMockStore(middleware);
-const store = mockStore(mockState);
+const store = mockStore(testState);
 const history = createMemoryHistory();
 
 describe('Component: App, App routing', () => {
@@ -66,7 +66,7 @@ describe('Component: App, App routing', () => {
 
   it('should render DetailedQuest screen', () => {
     const fakeQuest = getFakeQuest();
-    const state = deepClone(mockState);
+    const state = deepClone(testState);
     state.quest.quests = [ fakeQuest ];
 
     history.push(AppRoute.getQuestLink(fakeQuest.id));
@@ -118,7 +118,7 @@ describe('Component: App, App routing', () => {
   it('should render ServerNotWorking screen', () => {
     const title = /Наш сайт временно не работает, попробуйте зайти позже/;
 
-    const state = deepClone(mockState);
+    const state = deepClone(testState);
     state.app.serverNotWorking = true;
 
     act(async () => {

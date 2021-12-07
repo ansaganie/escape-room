@@ -8,7 +8,7 @@ import { createMemoryHistory } from 'history';
 import { ThemeProvider } from 'styled-components';
 import userEvent from '@testing-library/user-event';
 import { AppRoute, BackendRoute, QuestType, TabsInfo } from '../../constants';
-import { mockState } from '../../setupTests';
+import { testState } from '../../setupTests';
 import { thunkApi } from '../../store/store';
 import { appTheme } from '../app/common';
 import { getFakeQuests } from '../../test-utils/mock-data';
@@ -18,7 +18,7 @@ const axios = new MockAdapter(thunkApi);
 const middleware = [ thunk.withExtraArgument(thunkApi) ];
 
 const mockStore = configureMockStore(middleware);
-const store = mockStore(mockState);
+const store = mockStore(testState);
 const history = createMemoryHistory();
 
 describe('Component: Home', () => {

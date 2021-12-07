@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react';
-import { mockState } from '../../setupTests';
+import { testState } from '../../setupTests';
 import { deepClone } from '../../test-utils/common';
 import { ThemeProvider } from 'styled-components';
 import { appTheme } from '../app/common';
@@ -9,7 +9,7 @@ describe('Component: ServerNotWorking', () => {
   it('should render correctly', () => {
     const title = /Наш сайт временно не работает, попробуйте зайти позже/;
 
-    const state = deepClone(mockState);
+    const state = deepClone(testState);
     state.app.serverNotWorking = true;
 
     const screen = render(

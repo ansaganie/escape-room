@@ -5,14 +5,14 @@ import { configureMockStore } from '@jedmao/redux-mock-store';
 import MockAdapter from 'axios-mock-adapter';
 import { Router } from 'react-router';
 import { createMemoryHistory } from 'history';
-import { AppRoute, BackendRoutes, QuestType, TabsInfo } from '../../constants';
+import { ThemeProvider } from 'styled-components';
+import userEvent from '@testing-library/user-event';
+import { AppRoute, BackendRoute, QuestType, TabsInfo } from '../../constants';
 import { mockState } from '../../setupTests';
 import { thunkApi } from '../../store/store';
-import { ThemeProvider } from 'styled-components';
 import { appTheme } from '../app/common';
-import Home from './home';
 import { getFakeQuests } from '../../test-utils/mock-data';
-import userEvent from '@testing-library/user-event';
+import Home from './home';
 
 const axios = new MockAdapter(thunkApi);
 const middleware = [ thunk.withExtraArgument(thunkApi) ];
@@ -52,7 +52,7 @@ describe('Component: Home', () => {
     await act(async () => {
       const fakeQuests = getFakeQuests();
 
-      axios.onGet(BackendRoutes.Quests)
+      axios.onGet(BackendRoute.Quests)
         .reply(200, fakeQuests);
 
       const screen = render(
@@ -77,7 +77,7 @@ describe('Component: Home', () => {
       const mysticQuests = fakeQuests.filter(({ type }) => type === QuestType.Mystic);
       const horrorQuests = fakeQuests.filter(({ type }) => type === QuestType.Horror);
 
-      axios.onGet(BackendRoutes.Quests)
+      axios.onGet(BackendRoute.Quests)
         .reply(200, fakeQuests);
 
       const screen = render(

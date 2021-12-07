@@ -92,7 +92,7 @@ function BookingModal({
               </S.BookingField>
               <S.BookingField>
                 <S.BookingLabel htmlFor="booking-phone">
-                  Контактный телефон (9855310868)
+                  Контактный телефон (Пример: 9855310868)
                 </S.BookingLabel>
                 <S.BookingInput
                   type="tel"

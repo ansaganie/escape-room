@@ -38,7 +38,7 @@ const AppRoute = {
   getQuestLink: (questId: QuestId): string => `/quest/${questId}`,
 };
 
-const BackendRoutes = {
+const BackendRoute = {
   Quests: '/quests',
   Orders: '/orders',
   getQuestLink: (questId: QuestId): string => `/quests/${questId}`,
@@ -107,7 +107,7 @@ export {
   HttpCode,
   QuestType,
   AppRoute,
-  BackendRoutes,
+  BackendRoute,
   Menu,
   TabsInfo,
   QuestLevelTitle

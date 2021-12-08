@@ -1,4 +1,4 @@
-import { act, render } from '@testing-library/react';
+import { act, render, screen } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import { configureMockStore } from '@jedmao/redux-mock-store';
@@ -22,14 +22,14 @@ const store = mockStore(testState);
 const history = createMemoryHistory();
 
 describe('Component: Home', () => {
-  it('should render correctly', async () => {
-    await act(async () => {
-      const title = /Выберите тематику/;
-      const subtext = /квесты в Санкт-Петербурге/;
+  it('should render correctly', () => {
+    const title = /Выберите тематику/;
+    const subtext = /квесты в Санкт-Петербурге/;
 
-      history.push(AppRoute.Home);
+    history.push(AppRoute.Home);
 
-      const screen = render(
+    act(() => {
+      render(
         <Provider store={store}>
           <Router history={history}>
             <ThemeProvider theme={appTheme}>
@@ -38,13 +38,13 @@ describe('Component: Home', () => {
           </Router>
         </Provider>,
       );
+    });
 
-      expect(screen.getByText(title)).toBeInTheDocument();
-      expect(screen.getByText(subtext)).toBeInTheDocument();
+    expect(screen.getByText(title)).toBeInTheDocument();
+    expect(screen.getByText(subtext)).toBeInTheDocument();
 
-      Object.values(TabsInfo).forEach((tab) => {
-        expect(screen.getByText(tab.title)).toBeInTheDocument();
-      });
+    Object.values(TabsInfo).forEach((tab) => {
+      expect(screen.getByText(tab.title)).toBeInTheDocument();
     });
   });
 
@@ -55,7 +55,7 @@ describe('Component: Home', () => {
       axios.onGet(BackendRoute.Quests)
         .reply(200, fakeQuests);
 
-      const screen = render(
+      render(
         <Provider store={store}>
           <Router history={history}>
             <ThemeProvider theme={appTheme}>
@@ -80,7 +80,7 @@ describe('Component: Home', () => {
       axios.onGet(BackendRoute.Quests)
         .reply(200, fakeQuests);
 
-      const screen = render(
+      render(
         <Provider store={store}>
           <Router history={history}>
             <ThemeProvider theme={appTheme}>

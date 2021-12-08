@@ -5,7 +5,7 @@ import { SliceNames } from './constants';
 import appReducer, { setServerNotWorking } from './app/app-slice';
 import questReducer from './quest/quest-slice';
 
-const api = axios.create(AXIOS_DEFAULT_CONFIG);
+const thunkApi = axios.create(AXIOS_DEFAULT_CONFIG);
 
 const rootReducer = combineReducers({
   [SliceNames.Quest]: questReducer,
@@ -17,12 +17,12 @@ const store = configureStore({
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       thunk: {
-        extraArgument: api,
+        extraArgument: thunkApi,
       },
     }),
 });
 
-api.interceptors.response.use(
+thunkApi.interceptors.response.use(
   (response: AxiosResponse) => response,
   (error: AxiosError) => {
     const { response } = error;
@@ -44,5 +44,7 @@ api.interceptors.response.use(
 export type RootState = ReturnType<typeof store.getState>
 export type AppDispatch = typeof store.dispatch;
 export type AsyncAction<R = Promise<void>> = ThunkAction<R, RootState, AxiosInstance, Action>
+
+export { thunkApi };
 
 export default store;

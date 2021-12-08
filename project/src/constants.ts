@@ -38,7 +38,7 @@ const AppRoute = {
   getQuestLink: (questId: QuestId): string => `/quest/${questId}`,
 };
 
-const BackendRoutes = {
+const BackendRoute = {
   Quests: '/quests',
   Orders: '/orders',
   getQuestLink: (questId: QuestId): string => `/quests/${questId}`,
@@ -63,7 +63,7 @@ const Menu = [
   },
 ];
 
-const TABS = {
+const TabsInfo = {
   [QuestType.All]: {
     type: QuestType.All,
     title: 'Все квесты',
@@ -96,6 +96,38 @@ const TABS = {
   },
 };
 
+
+const ContactInfo = {
+  Address: {
+    title: 'Адрес',
+    value: {
+      cityName: 'Санкт-Петербург',
+      streetName: 'Набережная реки Карповка',
+      houseNumber: 5,
+    },
+  },
+  Regime: {
+    title: 'Режим работы',
+    value: 'Ежедневно, с 9:00 до 20:00',
+  },
+  Phone: {
+    title: 'Телефон',
+    value: '8 (800) 333-55-99',
+  },
+  Email: {
+    title: 'E-mail',
+    value: 'info@escape-room.ru',
+  },
+  Location: {
+    title: 'Координаты',
+    value: {
+      lat: 59.9681,
+      lng: 30.3163,
+      zoom: 17,
+    },
+  },
+};
+
 const QuestLevelTitle = {
   [QuestLevel.Easy]: 'легкий',
   [QuestLevel.Medium]: 'средний',
@@ -107,8 +139,9 @@ export {
   HttpCode,
   QuestType,
   AppRoute,
-  BackendRoutes,
+  BackendRoute,
   Menu,
-  TABS,
+  TabsInfo,
+  ContactInfo,
   QuestLevelTitle
 };

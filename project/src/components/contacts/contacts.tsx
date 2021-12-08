@@ -1,37 +1,7 @@
+import { ContactInfo } from '../../constants';
 import { MainLayout, PageTitle, PageSubtext } from '../common/common';
 import ContactsMap from './components/contacts-map';
 import * as S from './contacts.styled';
-
-const CONTACT = {
-  Address: {
-    title: 'Адрес',
-    value: {
-      cityName: 'Санкт-Петербург',
-      streetName: 'Набережная реки Карповка',
-      houseNumber: 5,
-    },
-  },
-  Regime: {
-    title: 'Режим работы',
-    value: 'Ежедневно, с 9:00 до 20:00',
-  },
-  Phone: {
-    title: 'Телефон',
-    value: '8 (800) 333-55-99',
-  },
-  Email: {
-    title: 'E-mail',
-    value: 'info@escape-room.ru',
-  },
-  Location: {
-    title: 'Координаты',
-    value: {
-      lat: 59.9681,
-      lng: 30.3163,
-      zoom: 17,
-    },
-  },
-};
 
 function Contacts(): JSX.Element {
   return (
@@ -44,32 +14,32 @@ function Contacts(): JSX.Element {
           </S.PageHeading>
           <S.Contacts>
             <S.ContactsList>
-              <S.ContactTitle>{CONTACT.Address.title}</S.ContactTitle>
+              <S.ContactTitle>{ContactInfo.Address.title}</S.ContactTitle>
               <S.ContactValue>
-                <S.ContactAddress>{`${CONTACT.Address.value.cityName},`}</S.ContactAddress>
+                <S.ContactAddress>{`${ContactInfo.Address.value.cityName},`}</S.ContactAddress>
                 <S.ContactAddress>
-                  {`${CONTACT.Address.value.streetName}, д ${CONTACT.Address.value.houseNumber}`}
+                  {`${ContactInfo.Address.value.streetName}, д ${ContactInfo.Address.value.houseNumber}`}
                 </S.ContactAddress>
               </S.ContactValue>
-              <S.ContactTitle>{CONTACT.Regime.title}</S.ContactTitle>
-              <S.ContactValue>{CONTACT.Regime.value}</S.ContactValue>
-              <S.ContactTitle>{CONTACT.Phone.title}</S.ContactTitle>
+              <S.ContactTitle>{ContactInfo.Regime.title}</S.ContactTitle>
+              <S.ContactValue>{ContactInfo.Regime.value}</S.ContactValue>
+              <S.ContactTitle>{ContactInfo.Phone.title}</S.ContactTitle>
               <S.ContactValue>
-                <S.ContactLink href={`tel:8 ${CONTACT.Phone.value}`}>
-                  {CONTACT.Phone.value}
+                <S.ContactLink href={`tel:8 ${ContactInfo.Phone.value}`}>
+                  {ContactInfo.Phone.value}
                 </S.ContactLink>
               </S.ContactValue>
-              <S.ContactTitle>{CONTACT.Email.title}</S.ContactTitle>
+              <S.ContactTitle>{ContactInfo.Email.title}</S.ContactTitle>
               <S.ContactValue>
-                <S.ContactLink href={`mailto:${CONTACT.Email.value}`}>
-                  {CONTACT.Email.value}
+                <S.ContactLink href={`mailto:${ContactInfo.Email.value}`}>
+                  {ContactInfo.Email.value}
                 </S.ContactLink>
               </S.ContactValue>
             </S.ContactsList>
             <ContactsMap
-              lat={CONTACT.Location.value.lat}
-              lng={CONTACT.Location.value.lng}
-              zoom={CONTACT.Location.value.zoom}
+              lat={ContactInfo.Location.value.lat}
+              lng={ContactInfo.Location.value.lng}
+              zoom={ContactInfo.Location.value.zoom}
             />
           </S.Contacts>
         </S.ContentWrapper>

@@ -1,7 +1,7 @@
 import { AxiosError } from 'axios';
 import appToast from '../../packages/app-toast';
 import api from '../api';
-import { BackendRoutes } from '../../constants';
+import { BackendRoute } from '../../constants';
 import { OrderForm } from '../../models/order-form';
 
 const POST_ORDER_PENDING = 'Обрабатываем вашу заявку...';
@@ -11,7 +11,7 @@ const postOrder = async (order: OrderForm): Promise<void> => {
   const toastId = appToast.pending(POST_ORDER_PENDING);
 
   try {
-    await api.post(BackendRoutes.Orders, order);
+    await api.post(BackendRoute.Orders, order);
     appToast.success(POST_ORDER_SUCCESS);
 
     return Promise.resolve();

@@ -62,8 +62,11 @@ const TabTitle = styled.span`
   border-bottom: 2px solid transparent;
 `;
 
+const TabIcon = styled.img``;
+
 export {
   TabItem,
   TabBtn,
-  TabTitle
+  TabTitle,
+  TabIcon
 };

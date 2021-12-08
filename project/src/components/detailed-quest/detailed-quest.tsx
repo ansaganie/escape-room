@@ -7,7 +7,7 @@ import { ReactComponent as IconClock } from '../../assets/img/icon-clock.svg';
 import { ReactComponent as IconPerson } from '../../assets/img/icon-person.svg';
 import { ReactComponent as IconPuzzle } from '../../assets/img/icon-puzzle.svg';
 import { BookingModal } from './components/components';
-import { QuestLevelTitle, TABS } from '../../constants';
+import { QuestLevelTitle, TabsInfo } from '../../constants';
 import { OrderForm } from '../../models/order-form';
 import usePageTitle from '../../hooks/use-page-title';
 import useQuestLoader from '../../hooks/use-quest-loader';
@@ -102,7 +102,7 @@ function DetailedQuest(): JSX.Element | null {
         : (
           <S.Main>
             <S.PageImage
-              src={`../${coverImg}`}
+              src={coverImg}
               alt={`Квест ${title}`}
               width="1366"
               height="768"
@@ -110,7 +110,7 @@ function DetailedQuest(): JSX.Element | null {
             <S.PageContentWrapper>
               <S.PageHeading>
                 <S.PageTitle>{title}</S.PageTitle>
-                <S.PageSubtitle>{TABS[type].title}</S.PageSubtitle>
+                <S.PageSubtitle>{TabsInfo[type].title}</S.PageSubtitle>
               </S.PageHeading>
               <S.PageDescription>
                 <S.Features>

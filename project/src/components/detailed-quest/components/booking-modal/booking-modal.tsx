@@ -1,4 +1,4 @@
-import React, { useMemo, MouseEvent } from 'react';
+import React, { useMemo, MouseEvent, memo } from 'react';
 import { Formik, FormikHelpers, FormikProps, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import * as S from './booking-modal.styled';
@@ -73,7 +73,7 @@ function BookingModal({
           onSubmit={onFormSubmit}
           validationSchema={validation}
         >
-          {({ errors, isSubmitting, touched }: FormikProps<OrderForm>) => (
+          {({ isSubmitting }: FormikProps<OrderForm>) => (
             <S.BookingForm
               id="booking-form"
             >
@@ -92,7 +92,7 @@ function BookingModal({
               </S.BookingField>
               <S.BookingField>
                 <S.BookingLabel htmlFor="booking-phone">
-                  Контактный телефон (9855310868)
+                  Контактный телефон (Пример: 9855310868)
                 </S.BookingLabel>
                 <S.BookingInput
                   type="tel"
@@ -157,4 +157,4 @@ function BookingModal({
   );
 }
 
-export default BookingModal;
+export default memo(BookingModal);

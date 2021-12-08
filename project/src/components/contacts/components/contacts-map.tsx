@@ -2,7 +2,7 @@ import React from 'react';
 import { TileLayer, Marker } from 'react-leaflet';
 import { Icon, Point } from 'leaflet';
 import * as S from './contacts-map.styled';
-import iconSVG from '../../../assets/img/icon-location.svg';
+import iconSVG from '../../../assets/img/icon-blip.svg';
 
 const ICON_SIZE_X = 40;
 const ICON_SIZE_Y = 50;

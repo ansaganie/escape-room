@@ -21,7 +21,7 @@ describe('Component: QuestsCatalog', () => {
               loading={false}
               quests={fakeQuests}
               selectedTab={QuestType.All}
-              setQuestType={jest.fn()}
+              onTabClick={jest.fn()}
             />
           </ThemeProvider>
         </Router>,

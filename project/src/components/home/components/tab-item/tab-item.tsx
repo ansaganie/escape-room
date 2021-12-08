@@ -7,7 +7,7 @@ type Props = {
   title: string,
   isActive: boolean,
   icon: string,
-  setQuestType: (questType: QuestType) => void,
+  onTabClick: (questType: QuestType) => void,
 }
 
 function TabItem({
@@ -15,11 +15,11 @@ function TabItem({
   icon,
   title,
   isActive,
-  setQuestType,
+  onTabClick,
 }: Props): JSX.Element {
 
   const handleTabClick = () => {
-    setQuestType(type);
+    onTabClick(type);
   };
 
   return (

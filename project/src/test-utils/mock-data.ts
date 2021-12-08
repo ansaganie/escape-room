@@ -1,6 +1,6 @@
 import { image, lorem, datatype } from 'faker';
-import { QuestType } from '../constants';
-import { PeopleCount, Quest, QuestLevel } from '../models/quest';
+import { QuestType, QuestLevel } from '../constants';
+import { PeopleCount, Quest } from '../models/quest';
 import { getRandomElement, getRandomInt } from './random';
 
 const MIN_DURATION = 50;
@@ -26,7 +26,7 @@ const getFakeQuest = (): Quest => ({
   type: getRandomElement(Object.values(QuestType)),
 });
 
-const getFakeQuests = (count: number = QUESTS_COUNT) =>
+const getFakeQuests = (count: number = QUESTS_COUNT): Quest[] =>
   new Array(count).fill(null).map(getFakeQuest);
 
 export { getFakeQuest, getFakeQuests };

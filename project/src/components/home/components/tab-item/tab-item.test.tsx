@@ -18,7 +18,7 @@ describe('Component: TabItem', () => {
             title={tab.title}
             isActive={false}
             icon={tab.icon}
-            setQuestType={setQuestType}
+            onTabClick={setQuestType}
           />
         </ThemeProvider>,
       );
@@ -40,7 +40,7 @@ describe('Component: TabItem', () => {
             title={tab.title}
             isActive={false}
             icon={tab.icon}
-            setQuestType={setQuestType}
+            onTabClick={setQuestType}
           />
         </ThemeProvider>,
       );

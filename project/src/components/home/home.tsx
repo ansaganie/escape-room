@@ -44,7 +44,7 @@ function Home(): JSX.Element {
         </PageHeading>
         <QuestsCatalog
           quests={quests}
-          setQuestType={setCurrentQuestType}
+          onTabClick={setCurrentQuestType}
           selectedTab={currentQuestType}
           loading={questsLoading}
         />

@@ -1,4 +1,4 @@
-import { QuestId, QuestLevel } from './models/quest';
+import { QuestId } from './models/quest';
 import IconAllQuests from './assets/img/icon-all-quests.svg';
 import IconAdventures from './assets/img/icon-adventures.svg';
 import IconHorrors from './assets/img/icon-horrors.svg';
@@ -31,11 +31,11 @@ enum QuestType {
 
 const AppRoute = {
   Home: '/',
-  DetailedQuest: '/quest/:questId',
+  DetailedQuest: '/detailed-quest/:questId',
   Newcomers: '/for-newcomers',
   Reviews: '/reviews',
   Contacts: '/contacts',
-  getQuestLink: (questId: QuestId): string => `/quest/${questId}`,
+  getQuestLink: (questId: QuestId): string => `/detailed-quest/${questId}`,
 };
 
 const BackendRoute = {
@@ -128,8 +128,14 @@ const ContactInfo = {
   },
 };
 
+enum QuestLevel {
+  Easy = 'easy',
+  Medium = 'medium',
+  Hard = 'hard',
+}
+
 const QuestLevelTitle = {
-  [QuestLevel.Easy]: 'легкий',
+  [QuestLevel.Easy]: 'простой',
   [QuestLevel.Medium]: 'средний',
   [QuestLevel.Hard]: 'сложный',
 };
@@ -143,5 +149,6 @@ export {
   Menu,
   TabsInfo,
   ContactInfo,
+  QuestLevel,
   QuestLevelTitle
 };

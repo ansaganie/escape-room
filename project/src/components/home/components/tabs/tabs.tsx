@@ -4,11 +4,11 @@ import { QuestType, TabsInfo } from '../../../../constants';
 import TabItem from '../tab-item/tab-item';
 
 type Props = {
-  setQuestType: (questType: QuestType) => void,
+  onTabClick: (questType: QuestType) => void,
   selectedTab: QuestType,
 }
 
-function Tabs({ setQuestType, selectedTab}: Props): JSX.Element {
+function Tabs({ onTabClick, selectedTab}: Props): JSX.Element {
   return (
     <S.Tabs>
       {Object.values(TabsInfo).map(({ type, title, icon }) => (
@@ -17,7 +17,7 @@ function Tabs({ setQuestType, selectedTab}: Props): JSX.Element {
           type={type}
           title={title}
           isActive={selectedTab === type}
-          setQuestType={setQuestType}
+          onTabClick={onTabClick}
           icon={icon}
         />
       ))}

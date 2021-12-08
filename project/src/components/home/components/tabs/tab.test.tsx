@@ -13,7 +13,7 @@ describe('Component: Tabs', () => {
       const screen = render(
         <ThemeProvider theme={appTheme}>
           <Tabs
-            setQuestType={setQuestType}
+            onTabClick={setQuestType}
             selectedTab={QuestType.All}
           />
         </ThemeProvider>,
@@ -33,7 +33,7 @@ describe('Component: Tabs', () => {
       const screen = render(
         <ThemeProvider theme={appTheme}>
           <Tabs
-            setQuestType={setQuestType}
+            onTabClick={setQuestType}
             selectedTab={QuestType.All}
           />
         </ThemeProvider>,
